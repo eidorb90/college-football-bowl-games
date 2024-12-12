@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowl Game Picker - Leaderboard</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d4a8a;
+            --accent-color: #f8b133;
+            --light-gray: #f4f4f4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .leaderboard-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .leaderboard-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        .rank {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .navigation {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            opacity: 0.9;
+        }
+
+        .top-performers {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .refresh-time {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bowl Game Picker Leaderboard</h1>
+            <p>See who's made the most correct picks!</p>
+        </div>
+
+        <div class="navigation">
+            <a href="/picker" class="nav-button">Back to Picks</a>
+            <a href="/logout" class="nav-button">Logout</a>
+        </div>
+
+        <div class="top-performers" id="topPerformers">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <table class="leaderboard-table" id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Correct Picks</th>
+                    <th>Total Picks</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Will be populated by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="refresh-time" id="refreshTime"></div>
+    </div>
+
+    <script>
+        function formatDateTime(date) {
+            return date.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit'
+            });
+        }
+
+        // Function to update the leaderboard
+        async function updateLeaderboard() {
+            try {
+                const response = await fetch('/api/leaderboard');
+                const leaderboard = await response.json();
+                
+                // Update the top performers section
+                const topPerformers = document.getElementById('topPerformers');
+                if (leaderboard.length > 0) {
+                    const leader = leaderboard[0];
+                    topPerformers.innerHTML = `
+                        <h3>🏆 Current Leader</h3>
+                        <p>${leader.username} is leading with ${leader.correct_picks} correct picks 
+                        (${leader.percentage}% accuracy)</p>
+                    `;
+                } else {
+                    topPerformers.innerHTML = '<p>No picks submitted yet!</p>';
+                }
+
+                // Update the main leaderboard table
+                const tbody = document.querySelector('#leaderboardTable tbody');
+                tbody.innerHTML = '';
+                
+                leaderboard.forEach((entry, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="rank">#${index + 1}</td>
+                        <td>${entry.username}</td>
+                        <td>${entry.correct_picks}</td>
+                        <td>${entry.total_picks}</td>
+                        <td>${entry.percentage}%</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Update refresh time
+                document.getElementById('refreshTime').textContent = 
+                    `Last updated: ${formatDateTime(new Date())}`;
+            } catch (error) {
+                console.error('Error fetching leaderboard:', error);
+            }
+        }
+
+        // Update leaderboard immediately and every 60 seconds
+        updateLeaderboard();
+        setInterval(updateLeaderboard, 60000);
+    </script>
+</body>
+</html>

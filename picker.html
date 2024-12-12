@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowl Game Picker</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d4a8a;
+            --accent-color: #f8b133;
+            --light-gray: #f4f4f4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            flex-grow: 1;
+        }
+
+        .user-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .game-container {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .game-header {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .game-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .team-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .pick-button {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            width: 45%;
+            transition: all 0.3s ease;
+        }
+
+        .pick-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .pick-button.selected {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .pick-button.winner {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .pick-button.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .standings {
+            background: var(--light-gray);
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .team-picks {
+            margin: 5px 0;
+            padding: 5px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .team-voters {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .submit-picks {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .submit-picks:hover {
+            opacity: 0.9;
+        }
+
+        .game-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+
+        .status-completed {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-in-progress {
+            background-color: #ffc107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>College Football Bowl Game Picker</h1>
+                <p>Make your picks for the 2024-25 bowl season!</p>
+            </div>
+            <div class="user-controls">
+                <span id="username"></span>
+                <a href="/leaderboard" class="nav-button">View Leaderboard</a>
+                <a href="/logout" class="nav-button">Logout</a>
+            </div>
+        </div>
+
+        <div class="game-container" id="gameContainer">
+            <!-- Games will be populated here via JavaScript -->
+        </div>
+
+        <button class="submit-picks" id="submitPicks">Submit Picks</button>
+    </div>
+
+    <script>
+        // Function to render a single game card
+        function createGameCard(game) {
+            const gameCard = document.createElement('div');
+            gameCard.className = 'game-card';
+            
+            // Add status badge if game is completed
+            let statusBadge = '';
+            if (game.status === 'completed') {
+                statusBadge = `<span class="game-status status-completed">Final</span>`;
+            } else if (game.status === 'in_progress') {
+                statusBadge = `<span class="game-status status-in-progress">In Progress</span>`;
+            }
+
+            gameCard.innerHTML = `
+                <div class="game-header">
+                    ${game.name}
+                    ${statusBadge}
+                </div>
+                <div class="game-details">
+                    ${game.date} | ${game.time}<br>
+                    ${game.location}
+                </div>
+                <div class="team-selector">
+                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''} 
+                            ${game.winner === game.team1 ? 'winner' : ''}" 
+                            data-team="${game.team1}" 
+                            data-game="${game.id}"
+                            ${game.status === 'completed' ? 'disabled' : ''}>
+                        ${game.team1}
+                    </button>
+                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''}
+                            ${game.winner === game.team2 ? 'winner' : ''}" 
+                            data-team="${game.team2}" 
+                            data-game="${game.id}"
+                            ${game.status === 'completed' ? 'disabled' : ''}>
+                        ${game.team2}
+                    </button>
+                </div>
+                <div class="standings">
+                    Community Picks: Loading...
+                </div>
+            `;
+            return gameCard;
+        }
+    
+        // Function to handle team selection
+        function handleTeamSelection(event) {
+            if (!event.target.classList.contains('pick-button') || 
+                event.target.classList.contains('disabled')) return;
+            
+            const gameCard = event.target.closest('.game-card');
+            const buttons = gameCard.querySelectorAll('.pick-button');
+            
+            buttons.forEach(button => button.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+    
+        // Function to gather all picks
+        function gatherPicks() {
+            const picks = {};
+            document.querySelectorAll('.pick-button.selected').forEach(button => {
+                picks[button.dataset.game] = button.dataset.team;
+            });
+            return picks;
+        }
+    
+        // Function to update community picks display
+        async function updateCommunityPicks() {
+            try {
+                const response = await fetch('/api/community-picks');
+                const communityPicks = await response.json();
+                
+                document.querySelectorAll('.game-card').forEach(card => {
+                    const gameId = card.querySelector('.pick-button').dataset.game;
+                    const pickInfo = communityPicks[gameId];
+                    const standingsDiv = card.querySelector('.standings');
+                    
+                    if (pickInfo) {
+                        const picksHtml = Object.entries(pickInfo.picks)
+                            .map(([team, count]) => {
+                                const voters = pickInfo.users[team].join(', ');
+                                return `
+                                    <div class="team-picks">
+                                        ${team}: ${count} pick${count !== 1 ? 's' : ''}
+                                        <div class="team-voters">Picked by: ${voters}</div>
+                                    </div>`;
+                            })
+                            .join('');
+                        standingsDiv.innerHTML = picksHtml || 'No picks yet';
+                    } else {
+                        standingsDiv.innerHTML = 'No picks yet';
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching community picks:', error);
+            }
+        }
+    
+        // Initialize the application
+        const gameContainer = document.getElementById('gameContainer');
+        const submitButton = document.getElementById('submitPicks');
+    
+        // Fetch and display games
+        fetch('/api/games')
+            .then(response => {
+                if (response.status === 401) {
+                    window.location.href = '/';
+                    return;
+                }
+                return response.json();
+            })
+            .then(games => {
+                if (games) {
+                    games.forEach(game => {
+                        gameContainer.appendChild(createGameCard(game));
+                    });
+                    updateCommunityPicks();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    
+        // Add event listeners
+        gameContainer.addEventListener('click', handleTeamSelection);
+    
+        submitButton.addEventListener('click', async () => {
+            const picks = gatherPicks();
+            try {
+                const response = await fetch('/api/submit-picks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(picks)
+                });
+                
+                if (response.ok) {
+                    alert('Picks submitted successfully!');
+                    updateCommunityPicks();
+                } else {
+                    alert('Error submitting picks. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting picks. Please try again.');
+            }
+        });
+
+        // Update community picks periodically
+        setInterval(updateCommunityPicks, 60000); // Update every minute
+    </script>
+</body>
+</html>
