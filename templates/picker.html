@@ -199,18 +199,21 @@
     </div>
 
     <script>
-        // Function to render a single game card
+       // Function to render a single game card
         function createGameCard(game) {
             const gameCard = document.createElement('div');
             gameCard.className = 'game-card';
             
-            // Add status badge if game is completed
+            // Add status badge if game is completed or in progress
             let statusBadge = '';
             if (game.status === 'completed') {
                 statusBadge = `<span class="game-status status-completed">Final</span>`;
             } else if (game.status === 'in_progress') {
                 statusBadge = `<span class="game-status status-in-progress">In Progress</span>`;
             }
+
+            // Determine if picks should be disabled based on game status
+            const pickDisabled = game.status === 'completed' || game.status === 'in_progress';
 
             gameCard.innerHTML = `
                 <div class="game-header">
@@ -222,18 +225,18 @@
                     ${game.location}
                 </div>
                 <div class="team-selector">
-                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''} 
+                    <button class="pick-button ${pickDisabled ? 'disabled' : ''} 
                             ${game.winner === game.team1 ? 'winner' : ''}" 
                             data-team="${game.team1}" 
                             data-game="${game.id}"
-                            ${game.status === 'completed' ? 'disabled' : ''}>
+                            ${pickDisabled ? 'disabled' : ''}>
                         ${game.team1}
                     </button>
-                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''}
+                    <button class="pick-button ${pickDisabled ? 'disabled' : ''}
                             ${game.winner === game.team2 ? 'winner' : ''}" 
                             data-team="${game.team2}" 
                             data-game="${game.id}"
-                            ${game.status === 'completed' ? 'disabled' : ''}>
+                            ${pickDisabled ? 'disabled' : ''}>
                         ${game.team2}
                     </button>
                 </div>
