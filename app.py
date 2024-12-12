@@ -11,7 +11,7 @@ app.secret_key = 'your-secret-key-here'  # In production, use a secure secret ke
 
 # Constants for application configuration
 VALID_CODE = 'BWCFBG'  # Access code users need to enter
-ADMIN_CODE = 'BlaineSucks'  # Admin access code
+ADMIN_CODE = 'BlainSucks'  # Admin access code
 ADMIN_USERS = {'BrodieAdmin', 'RhettAdmin'}  # Set of admin usernames
 GAMES_FILE = 'data/games.json'  # File storing bowl game information
 PICKS_FILE = 'data/picks.json'  # File storing user picks
@@ -238,7 +238,7 @@ def get_community_picks():
 @login_required
 @admin_required
 def admin_update_game():
-    """Update game status and winner."""
+    """Update game details, status, and winner."""
     try:
         game_data = request.json
         game_id = game_data.get('game_id')
@@ -248,9 +248,13 @@ def admin_update_game():
         with open(GAMES_FILE, 'r') as f:
             data = json.load(f)
 
-        # Find and update the specific game
         for game in data['games']:
             if game['id'] == game_id:
+                game['team1'] = game_data.get('team1', game['team1'])
+                game['team2'] = game_data.get('team2', game['team2'])
+                game['date'] = game_data.get('date', game['date'])
+                game['time'] = game_data.get('time', game['time'])
+                game['location'] = game_data.get('location', game['location'])
                 game['status'] = status
                 game['winner'] = winner
                 break
@@ -310,6 +314,19 @@ def get_leaderboard():
     except Exception as e:
         print(f"Error generating leaderboard: {str(e)}")
         return jsonify([])
+
+@app.route('/api/all-picks')
+@login_required
+@admin_required
+def get_all_picks():
+    """Return all user picks data."""
+    try:
+        with open(PICKS_FILE, 'r') as f:
+            all_picks = json.load(f)
+        return jsonify(all_picks)
+    except Exception as e:
+        print(f"Error getting all picks: {str(e)}")
+        return jsonify({}), 500
 
 def create_app():
     """Create and configure the Flask application."""
