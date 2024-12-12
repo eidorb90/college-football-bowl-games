@@ -195,6 +195,30 @@
         .update-button:hover {
             opacity: 0.9;
         }
+
+        .admin-controls {
+            margin-bottom: 20px;
+        }
+
+        .admin-button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .game-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -224,6 +248,11 @@
         <div id="adminContent" class="admin-content">
             <div id="successMessage" class="success-message">
                 Game updated successfully!
+            </div>
+
+            <div class="admin-controls">
+                <button class="admin-button" onclick="downloadGamesData()">Download Games Data</button>
+                <button class="admin-button" onclick="downloadPicksData()">Download Picks Data</button>
             </div>
 
             <div class="game-grid" id="gameGrid">
@@ -275,9 +304,12 @@
                     </span>
                 </div>
                 <div class="game-details">
-                    ${game.date} | ${game.time}<br>
-                    ${game.location}
+                    <input type="text" class="game-input date-input" value="${game.date}" data-game-id="${game.id}">
+                    <input type="text" class="game-input time-input" value="${game.time}" data-game-id="${game.id}">
+                    <input type="text" class="game-input location-input" value="${game.location}" data-game-id="${game.id}">
                 </div>
+                <input type="text" class="game-input team1-input" value="${game.team1}" data-game-id="${game.id}">
+                <input type="text" class="game-input team2-input" value="${game.team2}" data-game-id="${game.id}">
                 <select class="status-select" data-game-id="${game.id}">
                     <option value="scheduled" ${game.status === 'scheduled' ? 'selected' : ''}>Scheduled</option>
                     <option value="in_progress" ${game.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
@@ -309,6 +341,12 @@
             const status = statusSelect.value;
             const winner = status === 'completed' ? winnerSelect.value : null;
 
+            const team1 = document.querySelector(`.team1-input[data-game-id="${gameId}"]`).value;
+            const team2 = document.querySelector(`.team2-input[data-game-id="${gameId}"]`).value;
+            const date = document.querySelector(`.date-input[data-game-id="${gameId}"]`).value;
+            const time = document.querySelector(`.time-input[data-game-id="${gameId}"]`).value;
+            const location = document.querySelector(`.location-input[data-game-id="${gameId}"]`).value;
+
             if (status === 'completed' && !winner) {
                 alert('Please select a winner for completed games');
                 return;
@@ -322,6 +360,11 @@
                     },
                     body: JSON.stringify({
                         game_id: gameId,
+                        team1: team1,
+                        team2: team2,
+                        date: date,
+                        time: time,
+                        location: location,
                         status: status,
                         winner: winner
                     })
@@ -364,6 +407,28 @@
             } catch (error) {
                 console.error('Error:', error);
             }
+        }
+
+        async function downloadGamesData() {
+            const response = await fetch('/api/games');
+            const games = await response.json();
+            downloadJsonFile(games, 'games.json');
+        }
+
+        async function downloadPicksData() {
+            const response = await fetch('/api/all-picks');
+            const picks = await response.json();
+            downloadJsonFile(picks, 'picks.json');
+        }
+
+        function downloadJsonFile(data, filename) {
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
