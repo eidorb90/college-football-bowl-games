@@ -3,7 +3,6 @@ from datetime import datetime
 import json
 import os
 from functools import wraps
-from operator import itemgetter
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -11,7 +10,7 @@ app.secret_key = 'your-secret-key-here'  # In production, use a secure secret ke
 
 # Constants for application configuration
 VALID_CODE = 'BWCFBG'  # Access code users need to enter
-ADMIN_CODE = 'BlainSucks'  # Admin access code
+ADMIN_CODE = 'BlaineSucks'  # Admin access code
 ADMIN_USERS = {'BrodieAdmin', 'RhettAdmin'}  # Set of admin usernames
 GAMES_FILE = 'data/games.json'  # File storing bowl game information
 PICKS_FILE = 'data/picks.json'  # File storing user picks
@@ -38,16 +37,13 @@ def admin_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if 'username' not in session or session['username'] not in ADMIN_USERS:
+        if 'username' not in session or 'is_admin' not in session:
             abort(403)  # Forbidden
         return f(*args, **kwargs)
     return decorated_function
 
 def initialize_picks():
-    """
-    Initialize or validate the picks data file.
-    Creates a new file with empty JSON structure if it doesn't exist.
-    """
+    """Initialize or validate the picks data file."""
     if not os.path.exists(PICKS_FILE):
         with open(PICKS_FILE, 'w') as f:
             json.dump({}, f, indent=2)
@@ -60,10 +56,7 @@ def initialize_picks():
                 json.dump({}, f, indent=2)
 
 def ensure_valid_games_file():
-    """
-    Ensure the games.json file exists and contains valid data.
-    Creates or repairs the file if necessary.
-    """
+    """Ensure the games.json file exists and contains valid data."""
     try:
         with open(GAMES_FILE, 'r') as f:
             json.load(f)
@@ -78,7 +71,7 @@ def ensure_valid_games_file():
                 "time": "12:00 PM ET",
                 "location": "Mercedes-Benz Stadium, Atlanta, Georgia",
                 "status": "scheduled",
-                "winner": null
+                "winner": None
             }
         ]}
         with open(GAMES_FILE, 'w') as f:
@@ -117,7 +110,6 @@ def leaderboard():
 
 @app.route('/admin')
 @login_required
-@admin_required
 def admin_panel():
     """Serve the admin panel page."""
     return render_template('admin.html')
@@ -136,20 +128,11 @@ def verify_admin():
         print(f"Error in admin verification: {str(e)}")
         return jsonify({'error': 'Verification error'}), 500
 
-# Modify the admin_required decorator
-def admin_required(f):
-    """Decorator to require admin access for protected routes"""
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'username' not in session or 'is_admin' not in session:
-            abort(403)  # Forbidden
-        return f(*args, **kwargs)
-    return decorated_function   
-
 @app.route('/logout')
 def logout():
     """Handle user logout."""
     session.pop('username', None)
+    session.pop('is_admin', None)
     return redirect(url_for('login'))
 
 @app.route('/api/games')
@@ -267,6 +250,100 @@ def admin_update_game():
         print(f"Error updating game: {str(e)}")
         return jsonify({'error': 'Error updating game'}), 500
 
+@app.route('/api/admin/update-picks', methods=['POST'])
+@login_required
+@admin_required
+def admin_update_picks():
+    """Update picks for a specific user."""
+    try:
+        data = request.json
+        username = data.get('username')
+        new_picks = data.get('picks')
+        
+        if not username or not new_picks:
+            return jsonify({'error': 'Missing required data'}), 400
+            
+        with open(PICKS_FILE, 'r') as f:
+            all_picks = json.load(f)
+            
+        if username not in all_picks:
+            return jsonify({'error': 'User not found'}), 404
+            
+        all_picks[username]['picks'] = new_picks
+        all_picks[username]['timestamp'] = datetime.now().isoformat()
+        
+        with open(PICKS_FILE, 'w') as f:
+            json.dump(all_picks, f, indent=2)
+            
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        print(f"Error updating picks: {str(e)}")
+        return jsonify({'error': 'Error updating picks'}), 500
+
+@app.route('/api/admin/clear-picks', methods=['POST'])
+@login_required
+@admin_required
+def admin_clear_picks():
+    """Clear all picks for a specific user."""
+    try:
+        username = request.json.get('username')
+        
+        if not username:
+            return jsonify({'error': 'Username required'}), 400
+            
+        with open(PICKS_FILE, 'r') as f:
+            all_picks = json.load(f)
+            
+        if username not in all_picks:
+            return jsonify({'error': 'User not found'}), 404
+            
+        all_picks[username]['picks'] = {}
+        all_picks[username]['timestamp'] = datetime.now().isoformat()
+        
+        with open(PICKS_FILE, 'w') as f:
+            json.dump(all_picks, f, indent=2)
+            
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        print(f"Error clearing picks: {str(e)}")
+        return jsonify({'error': 'Error clearing picks'}), 500
+
+@app.route('/api/admin/upload-picks', methods=['POST'])
+@login_required
+@admin_required
+def admin_upload_picks():
+    """Upload entire picks dataset."""
+    try:
+        new_picks = request.json
+        
+        if not isinstance(new_picks, dict):
+            return jsonify({'error': 'Invalid picks data format'}), 400
+            
+        # Validate the structure of uploaded picks
+        for username, user_data in new_picks.items():
+            if not isinstance(user_data, dict) or 'picks' not in user_data:
+                return jsonify({'error': f'Invalid data format for user {username}'}), 400
+        
+        with open(PICKS_FILE, 'w') as f:
+            json.dump(new_picks, f, indent=2)
+            
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        print(f"Error uploading picks: {str(e)}")
+        return jsonify({'error': 'Error uploading picks'}), 500
+
+@app.route('/api/all-picks')
+@login_required
+def get_all_picks():
+    """Return all user picks data."""
+    try:
+        with open(PICKS_FILE, 'r') as f:
+            all_picks = json.load(f)
+        return jsonify(all_picks)
+    except Exception as e:
+        print(f"Error getting all picks: {str(e)}")
+        return jsonify({}), 500
+
 @app.route('/api/leaderboard')
 @login_required
 def get_leaderboard():
@@ -314,19 +391,6 @@ def get_leaderboard():
     except Exception as e:
         print(f"Error generating leaderboard: {str(e)}")
         return jsonify([])
-
-@app.route('/api/all-picks')
-@login_required
-@admin_required
-def get_all_picks():
-    """Return all user picks data."""
-    try:
-        with open(PICKS_FILE, 'r') as f:
-            all_picks = json.load(f)
-        return jsonify(all_picks)
-    except Exception as e:
-        print(f"Error getting all picks: {str(e)}")
-        return jsonify({}), 500
 
 def create_app():
     """Create and configure the Flask application."""
