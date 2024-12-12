@@ -11,8 +11,8 @@ app.secret_key = 'your-secret-key-here'  # In production, use a secure secret ke
 
 # Constants for application configuration
 VALID_CODE = 'BWCFBG'  # Access code users need to enter
-ADMIN_CODE = 'ADMIN123'  # Admin access code
-ADMIN_USERS = {'BrodieAdmin'}  # Set of admin usernames
+ADMIN_CODE = 'BlainSucks'  # Admin access code
+ADMIN_USERS = {'BrodieAdmin', 'RhettAdmin'}  # Set of admin usernames
 GAMES_FILE = 'data/games.json'  # File storing bowl game information
 PICKS_FILE = 'data/picks.json'  # File storing user picks
 
