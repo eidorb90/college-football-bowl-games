@@ -10,7 +10,7 @@ app.secret_key = 'your-secret-key-here'  # In production, use a secure secret ke
 
 # Constants for application configuration
 VALID_CODE = 'BWCFBG'  # Access code users need to enter
-ADMIN_CODE = 'BlaineSucks'  # Admin access code
+ADMIN_CODE = 'BlainSucks'  # Admin access code
 ADMIN_USERS = {'BrodieAdmin', 'RhettAdmin'}  # Set of admin usernames
 GAMES_FILE = 'data/games.json'  # File storing bowl game information
 PICKS_FILE = 'data/picks.json'  # File storing user picks
@@ -168,7 +168,11 @@ def submit_picks():
                 all_picks = {}
         
         all_picks[username] = {
-            'picks': user_picks,
+            'picks': user_picks.get('picks', {}),
+            'championship_prediction': user_picks.get('championship_prediction', {
+                'team1_score': None,
+                'team2_score': None
+            }),
             'timestamp': datetime.now().isoformat()
         }
         
@@ -298,6 +302,10 @@ def admin_clear_picks():
             return jsonify({'error': 'User not found'}), 404
             
         all_picks[username]['picks'] = {}
+        all_picks[username]['championship_prediction'] = {
+            'team1_score': None,
+            'team2_score': None
+        }
         all_picks[username]['timestamp'] = datetime.now().isoformat()
         
         with open(PICKS_FILE, 'w') as f:
