@@ -175,6 +175,47 @@
             background-color: #ffc107;
             color: black;
         }
+
+        .championship-prediction {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .score-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .score-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .championship-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .scores-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -195,11 +236,26 @@
             <!-- Games will be populated here via JavaScript -->
         </div>
 
+        <div class="championship-prediction">
+            <h2 class="championship-title">National Championship Score Prediction</h2>
+            <div class="scores-container">
+                <div class="score-group">
+                    <label for="team1Score">Team 1 Score</label>
+                    <input type="number" id="team1Score" class="score-input" min="0" placeholder="Enter score">
+                </div>
+                <div class="score-group">
+                    <label for="team2Score">Team 2 Score</label>
+                    <input type="number" id="team2Score" class="score-input" min="0" placeholder="Enter score">
+                </div>
+            </div>
+            <p class="text-sm text-gray-600">Enter your predicted score for the National Championship Game</p>
+        </div>
+
         <button class="submit-picks" id="submitPicks">Submit Picks</button>
     </div>
 
     <script>
-       // Function to render a single game card
+        // Function to render a single game card
         function createGameCard(game) {
             const gameCard = document.createElement('div');
             gameCard.className = 'game-card';
@@ -212,9 +268,6 @@
                 statusBadge = `<span class="game-status status-in-progress">In Progress</span>`;
             }
 
-            // Determine if picks should be disabled based on game status
-            const pickDisabled = game.status === 'completed' || game.status === 'in_progress';
-
             gameCard.innerHTML = `
                 <div class="game-header">
                     ${game.name}
@@ -225,18 +278,18 @@
                     ${game.location}
                 </div>
                 <div class="team-selector">
-                    <button class="pick-button ${pickDisabled ? 'disabled' : ''} 
+                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''} 
                             ${game.winner === game.team1 ? 'winner' : ''}" 
                             data-team="${game.team1}" 
                             data-game="${game.id}"
-                            ${pickDisabled ? 'disabled' : ''}>
+                            ${game.status === 'completed' ? 'disabled' : ''}>
                         ${game.team1}
                     </button>
-                    <button class="pick-button ${pickDisabled ? 'disabled' : ''}
+                    <button class="pick-button ${game.status === 'completed' ? 'disabled' : ''}
                             ${game.winner === game.team2 ? 'winner' : ''}" 
                             data-team="${game.team2}" 
                             data-game="${game.id}"
-                            ${pickDisabled ? 'disabled' : ''}>
+                            ${game.status === 'completed' ? 'disabled' : ''}>
                         ${game.team2}
                     </button>
                 </div>
@@ -265,7 +318,17 @@
             document.querySelectorAll('.pick-button.selected').forEach(button => {
                 picks[button.dataset.game] = button.dataset.team;
             });
-            return picks;
+
+            const team1Score = document.getElementById('team1Score').value;
+            const team2Score = document.getElementById('team2Score').value;
+
+            return {
+                picks: picks,
+                championship_prediction: {
+                    team1_score: team1Score ? parseInt(team1Score) : null,
+                    team2_score: team2Score ? parseInt(team2Score) : null
+                }
+            };
         }
     
         // Function to update community picks display
@@ -299,6 +362,41 @@
                 console.error('Error fetching community picks:', error);
             }
         }
+
+        // Load user's existing picks and predictions
+        async function loadExistingPicks() {
+            try {
+                const response = await fetch('/api/all-picks');
+                const allPicks = await response.json();
+                const username = '{{ session.username }}'; // Flask will replace this
+                
+                if (allPicks[username]) {
+                    const userPicks = allPicks[username];
+                    
+                    // Load championship predictions if they exist
+                    if (userPicks.championship_prediction) {
+                        const { team1_score, team2_score } = userPicks.championship_prediction;
+                        if (team1_score !== null) {
+                            document.getElementById('team1Score').value = team1_score;
+                        }
+                        if (team2_score !== null) {
+                            document.getElementById('team2Score').value = team2_score;
+                        }
+                    }
+                    
+                    // Load game picks
+                    const picks = userPicks.picks;
+                    Object.entries(picks).forEach(([gameId, team]) => {
+                        const button = document.querySelector(`.pick-button[data-game="${gameId}"][data-team="${team}"]`);
+                        if (button) {
+                            button.classList.add('selected');
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading picks:', error);
+            }
+        }
     
         // Initialize the application
         const gameContainer = document.getElementById('gameContainer');
@@ -319,6 +417,7 @@
                         gameContainer.appendChild(createGameCard(game));
                     });
                     updateCommunityPicks();
+                    loadExistingPicks(); // Load existing picks after games are loaded
                 }
             })
             .catch(error => console.error('Error:', error));
