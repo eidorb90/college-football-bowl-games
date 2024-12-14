@@ -10,6 +10,9 @@
             --secondary-color: #2d4a8a;
             --accent-color: #f8b133;
             --light-gray: #f4f4f4;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
         }
 
         body {
@@ -20,7 +23,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -52,6 +55,7 @@
         .leaderboard-table th {
             background-color: var(--secondary-color);
             color: white;
+            font-weight: bold;
         }
 
         .leaderboard-table tr:nth-child(even) {
@@ -61,6 +65,21 @@
         .rank {
             font-weight: bold;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rank-1 .rank-number {
+            color: var(--gold);
+        }
+
+        .rank-2 .rank-number {
+            color: var(--silver);
+        }
+
+        .rank-3 .rank-number {
+            color: var(--bronze);
         }
 
         .navigation {
@@ -85,12 +104,35 @@
             opacity: 0.9;
         }
 
-        .top-performers {
+        .championship-predictions {
             background: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .predictions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .predictions-table th,
+        .predictions-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .predictions-table th {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .predictions-table tr:nth-child(even) {
+            background-color: var(--light-gray);
         }
 
         .refresh-time {
@@ -99,13 +141,21 @@
             font-size: 0.9em;
             margin-top: 10px;
         }
+
+        .top-performers {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Bowl Game Picker Leaderboard</h1>
-            <p>See who's made the most correct picks!</p>
+            <p>Track who's picked the most winners!</p>
         </div>
 
         <div class="navigation">
@@ -117,7 +167,24 @@
             <!-- Will be populated by JavaScript -->
         </div>
 
-        <table class="leaderboard-table" id="leaderboardTable">
+        <div class="championship-predictions">
+            <h3>Championship Game Score Predictions</h3>
+            <table class="predictions-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Team 1 Score</th>
+                        <th>Team 2 Score</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="championshipPredictions">
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <table class="leaderboard-table">
             <thead>
                 <tr>
                     <th>Rank</th>
@@ -127,7 +194,7 @@
                     <th>Percentage</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="leaderboardBody">
                 <!-- Will be populated by JavaScript -->
             </tbody>
         </table>
@@ -137,13 +204,40 @@
 
     <script>
         function formatDateTime(date) {
-            return date.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
+            return new Date(date).toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
                 minute: '2-digit'
             });
         }
 
-        // Function to update the leaderboard
+        async function loadChampionshipPredictions() {
+            try {
+                const response = await fetch('/api/all-picks');
+                const picks = await response.json();
+                
+                const predictionsTable = document.getElementById('championshipPredictions');
+                predictionsTable.innerHTML = '';
+                
+                Object.entries(picks).forEach(([username, userData]) => {
+                    if (userData.championship_prediction) {
+                        const { team1_score, team2_score } = userData.championship_prediction;
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${username}</td>
+                            <td>${team1_score !== null ? team1_score : '-'}</td>
+                            <td>${team2_score !== null ? team2_score : '-'}</td>
+                            <td>${formatDateTime(userData.timestamp)}</td>
+                        `;
+                        predictionsTable.appendChild(row);
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading championship predictions:', error);
+            }
+        }
+
         async function updateLeaderboard() {
             try {
                 const response = await fetch('/api/leaderboard');
@@ -163,13 +257,19 @@
                 }
 
                 // Update the main leaderboard table
-                const tbody = document.querySelector('#leaderboardTable tbody');
+                const tbody = document.getElementById('leaderboardBody');
                 tbody.innerHTML = '';
                 
                 leaderboard.forEach((entry, index) => {
+                    const rank = index + 1;
                     const row = document.createElement('tr');
+                    const rankClass = rank <= 3 ? `rank-${rank}` : '';
+                    
                     row.innerHTML = `
-                        <td class="rank">#${index + 1}</td>
+                        <td class="rank ${rankClass}">
+                            <span class="rank-number">#${rank}</span>
+                            ${rank === 1 ? '🏆' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : ''}
+                        </td>
                         <td>${entry.username}</td>
                         <td>${entry.correct_picks}</td>
                         <td>${entry.total_picks}</td>
@@ -186,9 +286,13 @@
             }
         }
 
-        // Update leaderboard immediately and every 60 seconds
-        updateLeaderboard();
-        setInterval(updateLeaderboard, 60000);
+        // Initial load
+        Promise.all([updateLeaderboard(), loadChampionshipPredictions()]);
+
+        // Refresh every minute
+        setInterval(() => {
+            Promise.all([updateLeaderboard(), loadChampionshipPredictions()]);
+        }, 60000);
     </script>
 </body>
 </html>
