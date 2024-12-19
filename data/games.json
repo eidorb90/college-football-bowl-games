@@ -38,11 +38,11 @@
       "id": "boca-raton-bowl",
       "location": "FAU Stadium, Boca Raton, Florida",
       "name": "Boca Raton Bowl",
-      "status": "scheduled",
+      "status": "completed",
       "team1": "James Madison",
       "team2": "Western Kentucky",
       "time": "5:30 PM ET",
-      "winner": null
+      "winner": "James Madison"
     },
     {
       "date": "Dec 18, 2024",
