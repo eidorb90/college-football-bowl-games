@@ -103,44 +103,44 @@
     "id": "cfp-first-round-2",
     "location": "University Park, Pennsylvania",
     "name": "CFP First Round Game",
-    "status": "scheduled",
+    "status": "completed",
     "team1": "SMU",
     "team2": "Penn State",
     "time": "12:00 PM ET",
-    "winner": null
+    "winner": "Penn State"
   },
   {
     "date": "Dec 21, 2024",
     "id": "cfp-first-round-3",
     "location": "Austin, Texas",
     "name": "CFP First Round Game",
-    "status": "scheduled",
+    "status": "completed",
     "team1": "Clemson",
     "team2": "Texas",
     "time": "4:00 PM ET",
-    "winner": null
+    "winner": "Texas"
   },
   {
     "date": "Dec 21, 2024",
     "id": "cfp-first-round-4",
     "location": "Columbus, Ohio",
     "name": "CFP First Round Game",
-    "status": "scheduled",
+    "status": "completed",
     "team1": "Tennessee",
     "team2": "Ohio State",
     "time": "8:00 PM ET",
-    "winner": null
+    "winner": "Ohio State"
   },
   {
     "date": "Dec 23, 2024",
     "id": "myrtle-beach-bowl",
     "location": "Brooks Stadium, Conway, South Carolina",
     "name": "Myrtle Beach Bowl",
-    "status": "scheduled",
+    "status": "completed",
     "team1": "Coastal Carolina",
     "team2": "UTSA",
     "time": "11:00 AM ET",
-    "winner": null
+    "winner": "Coastal Carolina"
   },
   {
     "date": "Dec 23, 2024",
@@ -402,7 +402,7 @@
     "name": "CFP Quarterfinal (Fiesta Bowl)",
     "status": "scheduled",
     "team1": "Boise State",
-    "team2": "TBD",
+    "team2": "Penn State",
     "time": "7:30 PM ET",
     "winner": null
   },
@@ -413,7 +413,7 @@
     "name": "CFP Quarterfinal (Peach Bowl)",
     "status": "scheduled",
     "team1": "Arizona State",
-    "team2": "TBD",
+    "team2": "Texas",
     "time": "1:00 PM ET",
     "winner": null
   },
@@ -424,7 +424,7 @@
     "name": "CFP Quarterfinal (Rose Bowl)",
     "status": "scheduled",
     "team1": "Oregon",
-    "team2": "TBD",
+    "team2": "Ohio State",
     "time": "5:00 PM ET",
     "winner": null
   },
@@ -435,7 +435,7 @@
     "name": "CFP Quarterfinal (Sugar Bowl)",
     "status": "scheduled",
     "team1": "Georgia",
-    "team2": "TBD",
+    "team2": "Notre Dame",
     "time": "8:45 PM ET",
     "winner": null
   },
