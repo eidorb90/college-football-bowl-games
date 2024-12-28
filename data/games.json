@@ -181,77 +181,77 @@
         "id": "rate-bowl",
         "location": "Chase Field, Phoenix, Arizona",
         "name": "Rate Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Rutgers",
         "team2": "Kansas State",
         "time": "5:30 PM ET",
-        "winner": null
+        "winner": "Kansas State"
       },
       {
         "date": "Dec 26, 2024",
         "id": "68-ventures-bowl",
         "location": "Hancock Whitney Stadium, Mobile, Alabama",
         "name": "68 Ventures Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Arkansas State",
         "team2": "Bowling Green",
         "time": "9:00 PM ET",
-        "winner": null
+        "winner": "Arkansas State"
       },
       {
         "date": "Dec 27, 2024",
         "id": "armed-forces-bowl",
         "location": "Amon G. Carter Stadium, Fort Worth, Texas",
         "name": "Armed Forces Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Navy",
         "team2": "Oklahoma",
         "time": "12:00 PM ET",
-        "winner": null
+        "winner": "Navy"
       },
       {
         "date": "Dec 27, 2024",
         "id": "birmingham-bowl",
         "location": "Protective Stadium, Birmingham, Alabama",
         "name": "Birmingham Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Georgia Tech",
         "team2": "Vanderbilt",
         "time": "3:30 PM ET",
-        "winner": null
+        "winner": "Vanderbilt"
       },
       {
         "date": "Dec 27, 2024",
         "id": "liberty-bowl",
         "location": "Simmons Bank Liberty Stadium, Memphis, Tennessee",
         "name": "Liberty Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Arkansas",
         "team2": "Texas Tech",
         "time": "7:00 PM ET",
-        "winner": null
+        "winner": "Arkansas"
       },
       {
         "date": "Dec 27, 2024",
         "id": "holiday-bowl",
         "location": "Snapdragon Stadium, San Diego, California",
         "name": "Holiday Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Syracuse",
         "team2": "Washington State",
         "time": "8:00 PM ET",
-        "winner": null
+        "winner": "Syracuse"
       },
       {
         "date": "Dec 27, 2024",
         "id": "las-vegas-bowl",
         "location": "Allegiant Stadium, Las Vegas, Nevada",
         "name": "Las Vegas Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "USC",
         "team2": "Texas A&M",
         "time": "10:30 PM ET",
-        "winner": null
+        "winner": "USC"
       },
       {
         "date": "Dec 28, 2024",
@@ -269,22 +269,22 @@
         "id": "pinstripe-bowl",
         "location": "Yankee Stadium, Bronx, New York",
         "name": "Pinstripe Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Boston College",
         "team2": "Nebraska",
         "time": "12:00 PM ET",
-        "winner": null
+        "winner": "Nebraska"
       },
       {
         "date": "Dec 28, 2024",
         "id": "new-mexico-bowl",
         "location": "University Stadium, Albuquerque, New Mexico",
         "name": "New Mexico Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "TCU",
         "team2": "Louisiana",
         "time": "2:15 PM ET",
-        "winner": null
+        "winner": "TCU"
       },
       {
         "date": "Dec 28, 2024",
