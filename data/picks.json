@@ -163,6 +163,7 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
@@ -180,7 +181,6 @@
       "holiday-bowl": "Syracuse",
       "independence-bowl": "Army",
       "la-bowl": "UNLV",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Texas Tech",
       "military-bowl": "NC State",
       "music-city-bowl": "Iowa",
@@ -196,7 +196,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-15T00:18:10.984818"
+    "timestamp": "2025-01-01T01:02:42.548312"
   },
   "DammitDale": {
     "championship_prediction": {
