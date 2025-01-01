@@ -258,11 +258,11 @@
         "id": "fenway-bowl",
         "location": "Fenway Park, Boston, Massachusetts",
         "name": "Fenway Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "UConn",
         "team2": "North Carolina",
         "time": "11:00 AM ET",
-        "winner": null
+        "winner": "UConn"
       },
       {
         "date": "Dec 28, 2024",
@@ -291,110 +291,110 @@
         "id": "pop-tarts-bowl",
         "location": "Camping World Stadium, Orlando, Florida",
         "name": "Pop-Tarts Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Miami (Fla.)",
         "team2": "Iowa State",
         "time": "3:30 PM ET",
-        "winner": null
+        "winner": "Iowa State"
       },
       {
         "date": "Dec 28, 2024",
         "id": "arizona-bowl",
         "location": "Arizona Stadium, Tucson, Arizona",
         "name": "Arizona Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Colorado State",
         "team2": "Miami (Ohio)",
         "time": "4:30 PM ET",
-        "winner": null
+        "winner": "Miami (Ohio)"
       },
       {
         "date": "Dec 28, 2024",
         "id": "military-bowl",
         "location": "Navy-Marine Corps Memorial Stadium, Annapolis, Maryland",
         "name": "Military Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "NC State",
         "team2": "East Carolina",
         "time": "5:45 PM ET",
-        "winner": null
+        "winner": "East Carolina"
       },
       {
         "date": "Dec 28, 2024",
         "id": "alamo-bowl",
         "location": "Alamodome, San Antonio, Texas",
         "name": "Alamo Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "BYU",
         "team2": "Colorado",
         "time": "7:30 PM ET",
-        "winner": null
+        "winner": "BYU"
       },
       {
         "date": "Dec 28, 2024",
         "id": "independence-bowl",
         "location": "Independence Stadium, Shreveport, Louisiana",
         "name": "Independence Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Army",
-        "team2": "Marshall",
+        "team2": "Louisiana Tech",
         "time": "9:15 PM ET",
-        "winner": null
+        "winner": "Army"
       },
       {
         "date": "Dec 30, 2024",
         "id": "music-city-bowl",
         "location": "Nissan Stadium, Nashville, Tennessee",
         "name": "Music City Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Missouri",
         "team2": "Iowa",
         "time": "2:30 PM ET",
-        "winner": null
+        "winner": "Missouri"
       },
       {
         "date": "Dec 31, 2024",
         "id": "reliaquest-bowl",
         "location": "Raymond James Stadium, Tampa, Florida",
         "name": "ReliaQuest Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Alabama",
         "team2": "Michigan",
         "time": "12:00 PM ET",
-        "winner": null
+        "winner": "Michigan"
       },
       {
         "date": "Dec 31, 2024",
         "id": "sun-bowl",
         "location": "Sun Bowl, El Paso, Texas",
         "name": "Sun Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Louisville",
         "team2": "Washington",
         "time": "2:00 PM ET",
-        "winner": null
+        "winner": "Louisville"
       },
       {
         "date": "Dec 31, 2024",
         "id": "citrus-bowl",
         "location": "Camping World Stadium, Orlando, Florida",
         "name": "Citrus Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "South Carolina",
         "team2": "Illinois",
         "time": "3:00 PM ET",
-        "winner": null
+        "winner": "Illinois"
       },
       {
         "date": "Dec 31, 2024",
         "id": "texas-bowl",
         "location": "NRG Stadium, Houston, Texas",
         "name": "Texas Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "LSU",
         "team2": "Baylor",
         "time": "3:30 PM ET",
-        "winner": null
+        "winner": "LSU"
       },
       {
         "date": "Dec 31, 2024",
