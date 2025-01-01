@@ -1,5 +1,9 @@
 {
   "Blaine": {
+    "championship_prediction": {
+      "team1_score": null,
+      "team2_score": null
+    },
     "picks": {
       "68-ventures-bowl": "Arkansas State",
       "alamo-bowl": "BYU",
@@ -9,12 +13,12 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
-      "cfp-fiesta-bowl": "TBD",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Indiana",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
-      "cfp-peach-bowl": "TBD",
+      "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
       "citrus-bowl": "Illinois",
@@ -28,7 +32,6 @@
       "gator-bowl": "Ole Miss",
       "hawaii-bowl": "South Florida",
       "holiday-bowl": "Syracuse",
-      "independence-bowl": "Marshall",
       "la-bowl": "Cal",
       "las-vegas-bowl": "USC",
       "liberty-bowl": "Texas Tech",
@@ -46,7 +49,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-14T02:47:44.100011"
+    "timestamp": "2025-01-01T00:25:47.033756"
   },
   "Brodie ": {
     "championship_prediction": {
@@ -62,12 +65,12 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
-      "cfp-fiesta-bowl": "Boise State",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Indiana",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
-      "cfp-peach-bowl": "Arizona State",
+      "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
       "citrus-bowl": "Illinois",
@@ -99,7 +102,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-23T19:30:25.283331"
+    "timestamp": "2025-01-01T00:26:52.710867"
   },
   "Cole": {
     "picks": {
@@ -364,7 +367,7 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "Jackson State",
-      "cfp-fiesta-bowl": "Boise State",
+      "cfp-fiesta-bowl": "TBD",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "SMU",
       "cfp-first-round-3": "Texas",
@@ -470,10 +473,14 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Tennessee",
+      "cfp-peach-bowl": "Texas",
+      "cfp-rose-bowl": "Ohio State",
+      "cfp-sugar-bowl": "Notre Dame",
       "citrus-bowl": "South Carolina",
       "cure-bowl": "Ohio",
       "dukes-mayo-bowl": "Minnesota",
@@ -487,7 +494,6 @@
       "holiday-bowl": "Washington State",
       "independence-bowl": "Army",
       "la-bowl": "Cal",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Texas Tech",
       "military-bowl": "NC State",
       "music-city-bowl": "Iowa",
@@ -503,6 +509,6 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2024-12-14T15:39:02.747589"
+    "timestamp": "2025-01-01T00:30:54.318378"
   }
 }
