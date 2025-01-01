@@ -217,6 +217,9 @@
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
+      "cfp-peach-bowl": "Texas",
+      "cfp-rose-bowl": "Oregon",
+      "cfp-sugar-bowl": "Notre Dame",
       "citrus-bowl": "Illinois",
       "cure-bowl": "Ohio",
       "dukes-mayo-bowl": "Minnesota",
@@ -230,7 +233,6 @@
       "holiday-bowl": "Syracuse",
       "independence-bowl": "Army",
       "la-bowl": "UNLV",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Texas Tech",
       "military-bowl": "NC State",
       "music-city-bowl": "Iowa",
@@ -246,7 +248,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2024-12-14T16:54:49.148710"
+    "timestamp": "2025-01-01T00:36:48.641809"
   },
   "Mark Nelms": {
     "championship_prediction": {
@@ -262,12 +264,11 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "Jackson State",
-      "cfp-fiesta-bowl": "TBD",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
-      "cfp-peach-bowl": "TBD",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
       "citrus-bowl": "South Carolina",
@@ -283,7 +284,6 @@
       "holiday-bowl": "Syracuse",
       "independence-bowl": "Army",
       "la-bowl": "UNLV",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Arkansas",
       "military-bowl": "NC State",
       "music-city-bowl": "Missouri",
@@ -299,7 +299,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-14T15:34:08.964598"
+    "timestamp": "2025-01-01T00:37:49.177428"
   },
   "Noah Zoltenko": {
     "picks": {
@@ -420,12 +420,12 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
-      "cfp-fiesta-bowl": "TBD",
+      "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Tennessee",
-      "cfp-peach-bowl": "TBD",
+      "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
       "citrus-bowl": "South Carolina",
@@ -439,9 +439,7 @@
       "gator-bowl": "Duke",
       "hawaii-bowl": "San Jose State",
       "holiday-bowl": "Washington State",
-      "independence-bowl": "Marshall",
       "la-bowl": "Cal",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Texas Tech",
       "military-bowl": "NC State",
       "music-city-bowl": "Iowa",
@@ -457,7 +455,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2024-12-14T16:03:57.559016"
+    "timestamp": "2025-01-01T00:38:15.062688"
   },
   "rhett": {
     "championship_prediction": {
