@@ -401,88 +401,88 @@
         "id": "cfp-fiesta-bowl",
         "location": "State Farm Stadium, Glendale, Arizona",
         "name": "CFP Quarterfinal (Fiesta Bowl)",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Boise State",
         "team2": "Penn State",
         "time": "7:30 PM ET",
-        "winner": null
+        "winner": "Penn State"
       },
       {
         "date": "Jan 1, 2025",
         "id": "cfp-peach-bowl",
         "location": "Mercedes-Benz Stadium, Atlanta, Georgia",
         "name": "CFP Quarterfinal (Peach Bowl)",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Arizona State",
         "team2": "Texas",
         "time": "1:00 PM ET",
-        "winner": null
+        "winner": "Texas"
       },
       {
         "date": "Jan 1, 2025",
         "id": "cfp-rose-bowl",
         "location": "Rose Bowl, Pasadena, California",
         "name": "CFP Quarterfinal (Rose Bowl)",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Oregon",
         "team2": "Ohio State",
         "time": "5:00 PM ET",
-        "winner": null
+        "winner": "Ohio State"
       },
       {
         "date": "Jan 1, 2025",
         "id": "cfp-sugar-bowl",
         "location": "Caesars Superdome, New Orleans, Louisiana",
         "name": "CFP Quarterfinal (Sugar Bowl)",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Georgia",
         "team2": "Notre Dame",
         "time": "8:45 PM ET",
-        "winner": null
+        "winner": "Notre Dame"
       },
       {
         "date": "Jan 2, 2025",
         "id": "gator-bowl",
         "location": "EverBank Stadium, Jacksonville, Florida",
         "name": "Gator Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Ole Miss",
         "team2": "Duke",
         "time": "7:30 PM ET",
-        "winner": null
+        "winner": "Ole Miss"
       },
       {
         "date": "Jan 3, 2025",
         "id": "first-responder-bowl",
         "location": "Gerald J. Ford Stadium, Dallas, Texas",
         "name": "First Responder Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "North Texas",
         "team2": "Texas State",
         "time": "4:00 PM ET",
-        "winner": null
+        "winner": "Texas State"
       },
       {
         "date": "Jan 3, 2025",
         "id": "dukes-mayo-bowl",
         "location": "Bank of America Stadium, Charlotte, North Carolina",
         "name": "Duke's Mayo Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Minnesota",
         "team2": "Virginia Tech",
         "time": "7:30 PM ET",
-        "winner": null
+        "winner": "Virginia Tech"
       },
       {
         "date": "Jan 4, 2025",
         "id": "bahamas-bowl",
         "location": "Thomas A. Robinson National Stadium, Nassau, Bahamas",
         "name": "Bahamas Bowl",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Liberty",
         "team2": "Buffalo",
         "time": "11:00 AM ET",
-        "winner": null
+        "winner": "Buffalo"
       },
       {
         "date": "Jan 9, 2025",
@@ -490,8 +490,8 @@
         "location": "Hard Rock Stadium, Miami Gardens, Florida",
         "name": "CFP Semifinal (Orange Bowl)",
         "status": "scheduled",
-        "team1": "TBD",
-        "team2": "TBD",
+        "team1": "Notre Dame",
+        "team2": "Penn St",
         "time": "7:30 PM ET",
         "winner": null
       },
@@ -501,8 +501,8 @@
         "location": "AT&T Stadium, Arlington, Texas",
         "name": "CFP Semifinal (Cotton Bowl)",
         "status": "scheduled",
-        "team1": "TBD",
-        "team2": "TBD",
+        "team1": "Ohio State",
+        "team2": "Texas",
         "time": "7:30 PM ET",
         "winner": null
       },
