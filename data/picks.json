@@ -65,11 +65,13 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Indiana",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
+      "cfp-orange-bowl": "Notre Dame",
       "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
@@ -102,7 +104,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-01T00:26:52.710867"
+    "timestamp": "2025-01-09T16:30:57.013224"
   },
   "Cole": {
     "picks": {
@@ -151,8 +153,8 @@
   },
   "Connor Janda": {
     "championship_prediction": {
-      "team1_score": null,
-      "team2_score": null
+      "team1_score": 21,
+      "team2_score": 17
     },
     "picks": {
       "68-ventures-bowl": "Arkansas State",
@@ -163,11 +165,14 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
+      "cfp-championship": "TBD",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Tennessee",
+      "cfp-orange-bowl": "Penn St",
       "citrus-bowl": "Illinois",
       "cure-bowl": "Jacksonville State",
       "dukes-mayo-bowl": "Minnesota",
@@ -196,7 +201,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-01T01:02:42.548312"
+    "timestamp": "2025-01-09T16:35:45.339729"
   },
   "DammitDale": {
     "championship_prediction": {
@@ -367,14 +372,14 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "Jackson State",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Boise State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "SMU",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Tennessee",
-      "cfp-peach-bowl": "TBD",
+      "cfp-orange-bowl": "Notre Dame",
       "cfp-rose-bowl": "Oregon",
-      "cfp-sugar-bowl": "TBD",
       "citrus-bowl": "South Carolina",
       "cure-bowl": "Jacksonville State",
       "dukes-mayo-bowl": "Minnesota",
@@ -404,7 +409,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-14T16:43:10.679267"
+    "timestamp": "2025-01-09T16:36:19.720187"
   },
   "Taos dale": {
     "championship_prediction": {
@@ -420,11 +425,13 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Tennessee",
+      "cfp-orange-bowl": "Notre Dame",
       "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
@@ -455,7 +462,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2025-01-01T00:38:15.062688"
+    "timestamp": "2025-01-09T16:36:40.015613"
   },
   "rhett": {
     "championship_prediction": {
