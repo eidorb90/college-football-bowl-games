@@ -13,11 +13,13 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Indiana",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
+      "cfp-orange-bowl": "Notre Dame",
       "cfp-peach-bowl": "Texas",
       "cfp-rose-bowl": "Oregon",
       "cfp-sugar-bowl": "Georgia",
@@ -49,7 +51,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-01T00:25:47.033756"
+    "timestamp": "2025-01-09T19:27:47.559698"
   },
   "Brodie ": {
     "championship_prediction": {
@@ -107,6 +109,10 @@
     "timestamp": "2025-01-09T16:30:57.013224"
   },
   "Cole": {
+    "championship_prediction": {
+      "team1_score": null,
+      "team2_score": null
+    },
     "picks": {
       "68-ventures-bowl": "Arkansas State",
       "alamo-bowl": "Colorado",
@@ -116,10 +122,12 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
+      "cfp-cotton-bowl": "Ohio State",
       "cfp-first-round-1": "Indiana",
       "cfp-first-round-2": "Penn State",
       "cfp-first-round-3": "Texas",
       "cfp-first-round-4": "Ohio State",
+      "cfp-orange-bowl": "Notre Dame",
       "citrus-bowl": "Illinois",
       "cure-bowl": "Jacksonville State",
       "dukes-mayo-bowl": "Virginia Tech",
@@ -131,9 +139,7 @@
       "gator-bowl": "Ole Miss",
       "hawaii-bowl": "San Jose State",
       "holiday-bowl": "Washington State",
-      "independence-bowl": "Marshall",
       "la-bowl": "Cal",
-      "las-vegas-bowl": "Texas A&amp;M",
       "liberty-bowl": "Arkansas",
       "military-bowl": "NC State",
       "music-city-bowl": "Missouri",
@@ -149,7 +155,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2024-12-14T00:56:15.971925"
+    "timestamp": "2025-01-09T18:14:33.306054"
   },
   "Connor Janda": {
     "championship_prediction": {
