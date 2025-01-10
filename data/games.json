@@ -489,11 +489,11 @@
         "id": "cfp-orange-bowl",
         "location": "Hard Rock Stadium, Miami Gardens, Florida",
         "name": "CFP Semifinal (Orange Bowl)",
-        "status": "scheduled",
+        "status": "completed",
         "team1": "Notre Dame",
         "team2": "Penn St",
         "time": "7:30 PM ET",
-        "winner": null
+        "winner": "Notre Dame"
       },
       {
         "date": "Jan 10, 2025",
