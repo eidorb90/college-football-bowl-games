@@ -55,8 +55,8 @@
   },
   "Brodie ": {
     "championship_prediction": {
-      "team1_score": null,
-      "team2_score": null
+      "team1_score": 28,
+      "team2_score": 21
     },
     "picks": {
       "68-ventures-bowl": "Arkansas State",
@@ -106,7 +106,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-09T16:30:57.013224"
+    "timestamp": "2025-01-20T15:18:16.659640"
   },
   "Cole": {
     "championship_prediction": {
