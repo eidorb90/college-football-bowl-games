@@ -1,8 +1,8 @@
 {
   "Blaine": {
     "championship_prediction": {
-      "team1_score": null,
-      "team2_score": null
+      "team1_score": 31,
+      "team2_score": 24
     },
     "picks": {
       "68-ventures-bowl": "Arkansas State",
@@ -13,6 +13,7 @@
       "birmingham-bowl": "Vanderbilt",
       "boca-raton-bowl": "Western Kentucky",
       "celebration-bowl": "South Carolina State",
+      "cfp-championship": "Ohio State",
       "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Indiana",
@@ -51,7 +52,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-09T19:27:47.559698"
+    "timestamp": "2025-01-20T16:27:51.014751"
   },
   "Brodie ": {
     "championship_prediction": {
@@ -224,6 +225,7 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "Jackson State",
+      "cfp-championship": "Ohio State",
       "cfp-fiesta-bowl": "Boise State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
@@ -261,7 +263,7 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2025-01-10T01:06:35.775416"
+    "timestamp": "2025-01-20T18:02:07.114412"
   },
   "Mark Nelms": {
     "championship_prediction": {
