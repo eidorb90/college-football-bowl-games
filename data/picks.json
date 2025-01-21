@@ -1,4 +1,14 @@
 {
+  " Cole": {
+    "championship_prediction": {
+      "team1_score": null,
+      "team2_score": null
+    },
+    "picks": {
+      "cfp-championship": "Ohio State"
+    },
+    "timestamp": "2025-01-21T00:10:34.949557"
+  },
   "Blaine": {
     "championship_prediction": {
       "team1_score": 31,
@@ -173,7 +183,7 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
-      "cfp-championship": "TBD",
+      "cfp-championship": "Ohio State",
       "cfp-cotton-bowl": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
@@ -209,7 +219,7 @@
       "sun-bowl": "Washington",
       "texas-bowl": "LSU"
     },
-    "timestamp": "2025-01-09T16:35:45.339729"
+    "timestamp": "2025-01-21T00:07:31.121504"
   },
   "DammitDale": {
     "championship_prediction": {
@@ -476,8 +486,8 @@
   },
   "rhett": {
     "championship_prediction": {
-      "team1_score": null,
-      "team2_score": null
+      "team1_score": 34,
+      "team2_score": 27
     },
     "picks": {
       "68-ventures-bowl": "Bowling Green",
@@ -488,6 +498,7 @@
       "birmingham-bowl": "Georgia Tech",
       "boca-raton-bowl": "James Madison",
       "celebration-bowl": "South Carolina State",
+      "cfp-championship": "Ohio State",
       "cfp-fiesta-bowl": "Penn State",
       "cfp-first-round-1": "Notre Dame",
       "cfp-first-round-2": "Penn State",
@@ -525,6 +536,6 @@
       "sun-bowl": "Louisville",
       "texas-bowl": "Baylor"
     },
-    "timestamp": "2025-01-10T01:17:52.424489"
+    "timestamp": "2025-01-21T00:08:03.153359"
   }
 }
